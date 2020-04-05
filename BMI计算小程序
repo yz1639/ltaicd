@@ -1,0 +1,50 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+name = input('您的名字是：')
+height = float(input(r'您的身高为（单位为m！）:'))
+weight = float(input(r'您的体重为（单位为kg！）:'))
+import os
+print('---------------BMI计算脚本 V1.5------------------\n \n')
+s= weight/(height*height) #BMI公式（体重除以身高的平方）
+bmi = int(s)
+if bmi<18.5:
+    a = '过轻'
+    print('您的BMI值计算为：'+ str(bmi)+ '\n您的BMI指数为：' + a,'要注意饮食均衡哦')
+
+elif bmi<=25:
+    a = '正常'
+    print('您的BMI值计算为：'+ str(bmi)+ '\n您的BMI指数为：' + a,r'看来很会保持身材嘛 (*^▽^*)')
+
+elif bmi<=28:
+    a = '过重'
+    print('您的BMI值计算为：'+ str(bmi)+ '\n您的BMI指数为：' + a,'饭后适当锻炼哦')
+
+elif bmi<=32:
+    a = '肥胖'
+    print('您的BMI值计算为：'+ str(bmi)+ '\n您的BMI指数为：' + a,'要多跑步哦 (*^▽^*)')
+
+else:
+    a = '严重肥胖'
+    print('您的BMI值计算为：'+ str(bmi)+ '\n您的BMI指数为：' + a,'亲，游泳健身办卡有兴趣吗？ (*^▽^*)')
+
+import requests
+
+api = "https://sc.ftqq.com/SCU92376T8d0baab8c7b25f6ac6222b8a2b622cdd5e868d46adda2.send"
+
+title = str(name) + 'BMI脚本计算结果'
+
+content =   'BMI指数为：'  + a +   '\n身高：' + str(height) + 'm' + '\n体重：' + str(weight) + 'kg'
+
+data = {
+
+"text":title,
+
+"desp":content
+
+}
+
+req = requests.post(api,data = data)
+
+print('\n \n---------------BMI计算脚本 V1.5------------------')
+print('运行成功，感谢您的使用，再见！\n  by litao\n \n')
+b = input("输入任意键退出程序：")
